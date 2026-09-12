@@ -1,25 +1,34 @@
 public class Main {
+
     public static void main(String[] args) {
-        RentalDirector director = new RentalDirector();
 
-        VehicleRentalPackage familyRental =
-                director.createFamilyRental();
+        GalleryDirector director = new GalleryDirector();
 
-        System.out.println("=== FAMILY RENTAL ===");
-        System.out.println(familyRental);
+        PhotoGallery travelGallery = director.createTravelGallery();
+
+        System.out.println("=== Travel Gallery ===");
+        System.out.println(travelGallery);
 
         System.out.println();
 
-        VehicleRentalPackage customRental =
-                new VehicleRentalPackageBuilder()
-                        .setVehicleType(VehicleType.BIKE)
-                        .setPickupLocation("AITU")
-                        .setReturnLocation("EXPO")
-                        .setRentalDays(2)
-                        .addGps()
-                        .build();
+        PhotoGallery portfolioGallery = director.createPortfolioGallery();
 
-        System.out.println("=== CUSTOM RENTAL ===");
-        System.out.println(customRental);
+        System.out.println("=== Portfolio Gallery ===");
+        System.out.println(portfolioGallery);
+
+        System.out.println();
+
+        PhotoGallery customGallery = new PhotoGalleryBuilder()
+                .setTitle("My Personal Gallery")
+                .setDescription("My favorite photos")
+                .setLayout(GalleryLayout.GRID)
+                .setTheme(GalleryTheme.DARK)
+                .setPhotosPerPage(20)
+                .setShowCaptions(false)
+                .setAllowDownload(false)
+                .build();
+
+        System.out.println("=== Custom Gallery ===");
+        System.out.println(customGallery);
     }
 }
